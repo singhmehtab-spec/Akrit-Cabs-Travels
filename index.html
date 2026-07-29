@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akrit Cabs & Travels| Premium Private Taxi & Outstation Tours</title>
+    <title>Akrit Cabs & Travels | Premium Private Taxi & Outstation Tours</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <meta name="apple-mobile-web-app-title" content="Akrit Travels" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Review Schema Markup for SEO -->
@@ -43,27 +43,52 @@
     <style>
         :root {
             --primary: #1A3059;
+            --primary-light: #25427a;
             --accent: #FFB800;
-            --dark: #121212;
-            --light: #FBFBFB;
+            --accent-hover: #e0a200;
+            --dark: #0f172a;
+            --light: #F8FAFC;
             --card-bg: #FFFFFF;
-            --navbar-bg: #1A3059;
+            --navbar-bg: rgba(26, 48, 89, 0.95);
+            --whatsapp-green: #25D366;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-        body { background: var(--light); color: #333; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* Dynamic Background Slideshow (.jpg) */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            background: var(--light); 
+            color: #334155; 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+            padding-bottom: 75px; /* Space for mobile floating bottom bar */
+        }
+
+        /* Hero Dynamic Background Slideshow */
         @keyframes slideshow {
-            0% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
-            25% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('2.jpg'); }
-            50% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('3.jpg'); }
-            75% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('4.jpg'); }
-            100% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
+            0% { background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%), url('1.jpg'); }
+            25% { background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%), url('2.jpg'); }
+            50% { background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%), url('3.jpg'); }
+            75% { background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%), url('4.jpg'); }
+            100% { background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.8) 100%), url('1.jpg'); }
         }
 
         /* Navigation Bar */
         .navbar {
             background: var(--navbar-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: #FFFFFF;
             padding: 12px 20px;
             display: flex;
@@ -72,37 +97,65 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
         }
+
         .logo-container { 
             display: flex; 
             align-items: center; 
             text-decoration: none; 
             color: #FFFFFF; 
-            font-weight: bold; 
-            font-size: 1.1rem; 
+            font-weight: 700; 
+            font-size: 1.15rem; 
+            gap: 10px;
         }
 
         .logo-img { 
-            width: 45px; 
-            height: 45px; 
+            width: 42px; 
+            height: 42px; 
             object-fit: cover; 
             border-radius: 50%; 
-            margin-right: 10px; 
+            border: 2px solid var(--accent);
         }
         
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links a { 
+            color: #FFFFFF; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
         .nav-links a:hover { color: var(--accent); }
         
         .mobile-menu-btn {
             display: none;
-            font-size: 1.8rem;
             background: none;
             border: none;
             color: #FFFFFF;
             cursor: pointer;
+            padding: 5px;
         }
+
+        .mobile-menu-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: #FFFFFF;
+        }
+
+        /* Mobile Backdrop Overlay */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 998;
+        }
+        .nav-overlay.active { display: block; }
 
         /* Hero Section */
         .hero {
@@ -110,132 +163,366 @@
             background-position: center;
             background-repeat: no-repeat;
             color: white;
-            padding: 90px 20px;
+            padding: 80px 20px 60px;
             text-align: center;
             animation: slideshow 20s infinite ease-in-out;
-            transition: background-image 1s ease-in-out;
+            border-radius: 0 0 24px 24px;
+            box-shadow: var(--shadow-md);
         }
-        .hero h1 { font-size: 3.2rem; margin-bottom: 10px; color: var(--accent); text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
-        .hero p { font-size: 1.3rem; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-        .hero-btns { display: flex; gap: 15px; justify-content: center; }
 
-        /* Container & Cards */
-        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        .hero h1 { 
+            font-size: clamp(2rem, 5vw, 3.2rem); 
+            font-weight: 800;
+            margin-bottom: 12px; 
+            color: var(--accent); 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5); 
+            line-height: 1.2;
+        }
+
+        .hero p { 
+            font-size: clamp(1rem, 2.5vw, 1.25rem); 
+            margin-bottom: 28px; 
+            color: #e2e8f0;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5); 
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns { 
+            display: flex; 
+            gap: 15px; 
+            justify-content: center; 
+            flex-wrap: wrap;
+        }
+
+        /* Containers & Cards */
+        .container { 
+            max-width: 1050px; 
+            margin: 0 auto; 
+            padding: 30px 16px; 
+        }
+
         .card {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            scroll-margin-top: 80px;
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            scroll-margin-top: 90px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .card-header { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-        .card-header h2 { color: var(--primary); font-size: 1.6rem; }
 
-        /* Buttons */
+        .card-header { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            position: relative;
+        }
+
+        .card-header h2 { 
+            color: var(--primary); 
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem); 
+            font-weight: 700;
+            padding-bottom: 6px;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Universal Button Styles */
         .btn {
-            display: inline-block;
-            padding: 16px 28px;
-            text-align: center;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            min-height: 48px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1rem;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
             cursor: pointer;
             border: none;
+            box-shadow: var(--shadow-sm);
         }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+        .btn:active { transform: scale(0.98); }
+        .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
         .btn-call { background: var(--accent); color: var(--primary); }
-        .btn-whatsapp { background: #25D366; color: white; }
-        .btn-gallery { background: var(--primary); color: white; margin-top: 20px; }
+        .btn-whatsapp { background: var(--whatsapp-green); color: white; }
+        .btn-gallery { background: var(--primary); color: white; margin-top: 15px; }
 
         /* Feature Badges Grid */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
-        .feature-box { padding: 20px; background: #F4F7FC; border-radius: 10px; border-top: 3px solid var(--primary); }
-        .feature-box h3 { font-size: 1.1rem; color: var(--primary); margin: 8px 0 5px; }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 16px; 
+            margin-top: 10px;
+        }
+
+        .feature-box { 
+            padding: 20px; 
+            background: #F1F5F9; 
+            border-radius: var(--radius-md); 
+            border-top: 4px solid var(--primary); 
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .feature-box:hover { transform: translateY(-3px); }
+        .feature-box h3 { font-size: 1.1rem; color: var(--primary); margin: 10px 0 6px; font-weight: 700; }
+        .feature-box p { font-size: 0.9rem; color: #64748B; }
 
         /* Route Chips */
         .routes-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .route-chip { background: #EAEFF8; color: var(--primary); font-weight: 600; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; }
+        .route-chip { 
+            background: #EFF6FF; 
+            color: var(--primary); 
+            border: 1px solid #BFDBFE;
+            font-weight: 600; 
+            padding: 10px 16px; 
+            border-radius: 30px; 
+            font-size: 0.9rem; 
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
 
         /* Fare Calculator */
-        .calc-box { background: #F8F9FA; padding: 20px; border-radius: 10px; border: 1px solid #E0E0E0; }
-        .calc-box label { font-weight: bold; display: block; margin: 10px 0 5px; color: var(--primary); }
-        .calc-box select, .calc-box input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 6px; font-size: 1rem; }
-        .calc-result { font-weight: bold; color: var(--primary); font-size: 1.2rem; margin-top: 15px; text-align: center; }
+        .calc-box { 
+            background: #F8FAFC; 
+            padding: 24px; 
+            border-radius: var(--radius-md); 
+            border: 1px solid #E2E8F0; 
+        }
 
-        /* Homepage Mini Gallery */
+        .calc-box label { font-weight: 700; display: block; margin: 12px 0 6px; color: var(--primary); font-size: 0.95rem; }
+        .calc-box select, .calc-box input { 
+            width: 100%; 
+            padding: 14px; 
+            border: 1px solid #CBD5E1; 
+            border-radius: var(--radius-md); 
+            font-size: 1rem; 
+            background-color: #FFFFFF;
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .calc-box select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A3059' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+        }
+
+        .calc-box select:focus, .calc-box input:focus { border-color: var(--primary); }
+
+        .calc-result { 
+            font-weight: 700; 
+            color: var(--primary); 
+            font-size: 1.25rem; 
+            margin-top: 20px; 
+            text-align: center; 
+            background: #FEF3C7;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--accent);
+        }
+
+        /* Mini Gallery Preview */
         .gallery-preview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
             margin-top: 15px;
         }
+
         .preview-item {
             position: relative;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
+            aspect-ratio: 4 / 3;
         }
+
         .preview-item img {
             width: 100%;
-            height: 240px;
+            height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
         }
+
         .preview-item:hover img { transform: scale(1.05); }
+
         .preview-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
             color: #fff;
-            padding: 10px 14px;
+            padding: 16px 12px 10px;
             font-size: 0.9rem;
             font-weight: 600;
         }
 
-        /* Review Styles */
-        .rating-summary { text-align: center; background: #FFF9E6; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #FFE082; }
-        .rating-summary h3 { font-size: 2.2rem; color: #D48800; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .review-card { background: #FAFAFA; border: 1px solid #EEE; padding: 20px; border-radius: 10px; position: relative; }
-        .review-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 8px; }
-        .review-author { font-weight: bold; color: var(--primary); margin-top: 10px; font-size: 0.95rem; }
-        .review-route { font-size: 0.8rem; color: #777; }
+        /* Review Section */
+        .rating-summary { 
+            text-align: center; 
+            background: #FFFBEB; 
+            padding: 20px; 
+            border-radius: var(--radius-md); 
+            margin-bottom: 24px; 
+            border: 1px solid #FDE68A; 
+        }
 
-        /* Form */
-        form label { display: block; margin: 12px 0 5px; font-weight: 600; }
-        form input, form textarea, form select { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 6px; font-size: 1rem; }
-        form button { background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 15px; width: 100%; font-weight: bold; }
+        .rating-summary h3 { font-size: 2.2rem; color: #D97706; font-weight: 800; }
+        .rating-summary p { font-size: 0.9rem; color: #B45309; font-weight: 600; }
+
+        .reviews-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 16px; 
+        }
+
+        .review-card { 
+            background: #F8FAFC; 
+            border: 1px solid #E2E8F0; 
+            padding: 18px; 
+            border-radius: var(--radius-md); 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 8px; }
+        .review-card p { font-size: 0.95rem; color: #334155; font-style: italic; }
+        .review-author { font-weight: 700; color: var(--primary); margin-top: 12px; font-size: 0.95rem; }
+        .review-route { font-size: 0.8rem; color: #64748B; font-weight: 500; }
+
+        /* Contact & Review Form */
+        form label { display: block; margin: 12px 0 6px; font-weight: 600; color: var(--primary); font-size: 0.95rem; }
+        form input, form textarea, form select { 
+            width: 100%; 
+            padding: 14px; 
+            border: 1px solid #CBD5E1; 
+            border-radius: var(--radius-md); 
+            font-size: 1rem; 
+            background: #FFFFFF;
+            outline: none;
+        }
+
+        form button { 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 16px; 
+            border-radius: var(--radius-md); 
+            font-size: 1.05rem; 
+            cursor: pointer; 
+            margin-top: 20px; 
+            width: 100%; 
+            font-weight: 700; 
+            box-shadow: var(--shadow-sm);
+            transition: background 0.2s;
+        }
+
+        form button:hover { background: var(--primary-light); }
+
+        /* Sticky Mobile Action Bar */
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #FFFFFF;
+            padding: 10px 16px;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+            z-index: 999;
+            gap: 12px;
+        }
+
+        .mobile-bottom-bar .btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 0.95rem;
+            border-radius: var(--radius-md);
+            min-height: 48px;
+        }
 
         /* Footer */
-        footer { text-align: center; padding: 40px 20px; background: var(--dark); color: #AAA; font-size: 0.9rem; margin-top: 40px; }
-        footer a { color: var(--accent); font-weight: bold; text-decoration: none; }
+        footer { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: var(--dark); 
+            color: #94A3B8; 
+            font-size: 0.9rem; 
+            margin-top: 40px; 
+        }
 
-        /* Mobile Adjustments */
+        footer a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+        /* Responsive Breakpoints & Mobile Adjustments */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
+            .mobile-bottom-bar { display: flex; }
+
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--navbar-bg);
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--primary);
                 flex-direction: column;
-                padding: 10px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+                justify-content: flex-start;
+                padding: 80px 24px 30px;
+                gap: 20px;
+                transition: right 0.3s ease-in-out;
+                z-index: 999;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
             }
-            .nav-links.active { display: flex; }
-            .nav-links a { padding: 14px 20px; text-align: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            .hero-btns { flex-direction: column; gap: 12px; }
-            .btn { width: 100%; padding: 18px; font-size: 1.15rem; }
+
+            .nav-links.active { right: 0; }
+
+            .nav-links a { 
+                font-size: 1.1rem; 
+                width: 100%; 
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            }
+
+            .nav-close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 1.8rem;
+                cursor: pointer;
+            }
+
+            .hero-btns { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .card { padding: 20px 16px; }
         }
     </style>
 </head>
@@ -244,11 +531,17 @@
     <!-- Header Navigation -->
     <nav class="navbar">
         <a href="#" class="logo-container">
-            <img src="logo.png" alt="Akrit Cabs & TravelsLogo" class="logo-img">
+            <img src="logo.png" alt="Akrit Cabs Logo" class="logo-img">
             <span>Akrit Cabs & Travels</span>
         </a>
-        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Open Navigation">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+
+        <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+
         <div class="nav-links" id="navLinks">
+            <button class="nav-close-btn" onclick="closeMenu()" aria-label="Close Navigation">✕</button>
             <a href="#" onclick="closeMenu()">Home</a>
             <a href="#calculator" onclick="closeMenu()">Estimate Fare</a>
             <a href="#why-us" onclick="closeMenu()">Why Choose Us</a>
@@ -260,12 +553,16 @@
 
     <!-- Dynamic Hero -->
     <header class="hero">
-        <div class="container">
-            <h1>Safe, Reliable,Akrit Cabs & Travels</h1>
-            <p>Independent Driver Serving Jalandhar, Punjab & Himachal Pradesh</p>
+        <div class="container" style="padding: 0;">
+            <h1>Safe, Reliable & Premium Rides</h1>
+            <p>Independent Taxi Service Serving Jalandhar, Punjab & Himachal Pradesh</p>
             <div class="hero-btns">
-                <a href="tel:+917986492813" class="btn btn-call">📞 Call Now: 7986492813</a>
-                <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+                <a href="tel:+917986492813" class="btn btn-call">
+                    <span>📞</span> Call: 7986492813
+                </a>
+                <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">
+                    <span>💬</span> Chat on WhatsApp
+                </a>
             </div>
         </div>
     </header>
@@ -275,28 +572,28 @@
         <!-- Why Choose Us -->
         <div class="card" id="why-us">
             <div class="card-header">
-                <h2>Why Ride With Akrit Cabs & Travels?</h2>
+                <h2>Why Ride With Us?</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-box">
-                    <div style="font-size:2rem;">🚗</div>
+                    <div style="font-size:2.2rem;">🚗</div>
                     <h3>Clean & Sanitized</h3>
-                    <p>Always spotless, AC, and well-maintained vehicle for high comfort.</p>
+                    <p>Always spotless, fully air-conditioned, well-maintained vehicle.</p>
                 </div>
                 <div class="feature-box">
-                    <div style="font-size:2rem;">🛡️</div>
+                    <div style="font-size:2.2rem;">🛡️</div>
                     <h3>Experienced Driver</h3>
-                    <p>Expert in hill driving (Shimla, Manali) and long highway routes.</p>
+                    <p>Expert in hill driving (Shimla, Manali) and long highway trips.</p>
                 </div>
                 <div class="feature-box">
-                    <div style="font-size:2rem;">💰</div>
+                    <div style="font-size:2.2rem;">💰</div>
                     <h3>Transparent Pricing</h3>
-                    <p>Fixed rates agreed beforehand with zero hidden surprises.</p>
+                    <p>Fixed upfront rates with absolutely zero hidden surprises.</p>
                 </div>
                 <div class="feature-box">
-                    <div style="font-size:2rem;">⏰</div>
+                    <div style="font-size:2.2rem;">⏰</div>
                     <h3>24/7 Punctuality</h3>
-                    <p>Guaranteed on-time airport drop and early morning pickups.</p>
+                    <p>Guaranteed on-time airport drops and early morning pickups.</p>
                 </div>
             </div>
         </div>
@@ -304,9 +601,9 @@
         <!-- Popular Outstation Routes -->
         <div class="card">
             <div class="card-header">
-                <h2>Popular Outstation Destinations</h2>
+                <h2>Popular Destinations</h2>
             </div>
-            <p>Direct door-to-door private taxi service to key cities and tourist destinations:</p>
+            <p style="color: #64748B;">Direct door-to-door private taxi service to key destinations:</p>
             <div class="routes-flex">
                 <span class="route-chip">🏔️ Jalandhar ➔ Shimla</span>
                 <span class="route-chip">🏔️ Jalandhar ➔ Manali</span>
@@ -338,8 +635,10 @@
                 <div class="calc-result" id="fareDisplay">
                     Estimated Rate: Contact for best price
                 </div>
-                <div style="text-align: center; margin-top: 15px;">
-                    <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20confirm%20a%20fare%20quote" class="btn btn-whatsapp">Book via WhatsApp</a>
+                <div style="text-align: center; margin-top: 18px;">
+                    <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20confirm%20a%20fare%20quote" class="btn btn-whatsapp" style="width: 100%;">
+                        <span>💬</span> Book Quote via WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -349,7 +648,7 @@
             <div class="card-header">
                 <h2>Journey Highlights</h2>
             </div>
-            <p>A sneak peek at our journeys across Punjab, Delhi & Himachal Pradesh:</p>
+            <p style="color: #64748B; margin-bottom: 10px;">A sneak peek at our trips across Punjab, Delhi & Himachal Pradesh:</p>
             
             <div class="gallery-preview">
                 <div class="preview-item">
@@ -362,12 +661,12 @@
                 </div>
                 <div class="preview-item">
                     <img src="IMG-20260728-WA0081.jpg" alt="Cab parked at hill resort">
-                    <div class="preview-caption">🏡 Doorstep Resort Pickup & Drop</div>
+                    <div class="preview-caption">🏡 Doorstep Resort Pick & Drop</div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 10px;">
-                <a href="gallery.html" class="btn btn-gallery">📸 View Full Photo & Video Gallery →</a>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="gallery.html" class="btn btn-gallery">📸 View Full Photo Gallery →</a>
             </div>
         </div>
 
@@ -383,7 +682,7 @@
             </div>
 
             <div class="reviews-grid" id="reviewsContainer">
-                <p>Loading latest passenger reviews...</p>
+                <p style="text-align: center; color: #64748B;">Loading latest reviews...</p>
             </div>
         </div>
 
@@ -415,6 +714,16 @@
 
     </div>
 
+    <!-- Mobile Floating Action Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="tel:+917986492813" class="btn btn-call">
+            <span>📞</span> Call Now
+        </a>
+        <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">
+            <span>💬</span> WhatsApp
+        </a>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>Driver Akrit Pal Singh | Phone: +91 7986492813</p>
@@ -422,7 +731,7 @@
         <p style="margin-top: 8px;">Instagram: <a href="https://www.instagram.com/akrit_airline_4218/" target="_blank">@akrit_airline_4218</a></p>
     </footer>
 
-    <!-- Firebase SDK (Real-time Firestore Integration) -->
+    <!-- Firebase SDK Integration -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -447,7 +756,7 @@
             container.innerHTML = "";
 
             if (snapshot.empty) {
-                container.innerHTML = "<p>No reviews posted yet. Be the first to leave one!</p>";
+                container.innerHTML = "<p style='text-align:center; color:#64748B;'>No reviews posted yet. Be the first to leave one!</p>";
                 document.getElementById("reviewCountText").innerText = "0 reviews submitted";
                 return;
             }
@@ -463,10 +772,14 @@
 
                 const cardHtml = `
                     <div class="review-card">
-                        <div class="review-stars">${stars}</div>
-                        <p>"${data.message}"</p>
-                        <div class="review-author">${data.name}</div>
-                        <div class="review-route">Route: ${data.route || 'General Ride'}</div>
+                        <div>
+                            <div class="review-stars">${stars}</div>
+                            <p>"${data.message}"</p>
+                        </div>
+                        <div>
+                            <div class="review-author">${data.name}</div>
+                            <div class="review-route">Route: ${data.route || 'General Ride'}</div>
+                        </div>
                     </div>
                 `;
                 container.innerHTML += cardHtml;
@@ -507,11 +820,13 @@
     <!-- UI Interactivity Scripts -->
     <script>
         function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("active");
+            document.getElementById("navLinks").classList.add("active");
+            document.getElementById("navOverlay").classList.add("active");
         }
 
         function closeMenu() {
             document.getElementById("navLinks").classList.remove("active");
+            document.getElementById("navOverlay").classList.remove("active");
         }
 
         function calculateFare() {
