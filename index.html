@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akrit Cabs & Travels| Premium Private Taxi & Outstation Tours</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Review Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "TaxiService",
+      "name": "Akrit Cabs & Travels",
+      "logo": "logo.png",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Akrit Pal Singh",
+        "telephone": "+917986492813",
+        "email": "singhakritpal9@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chandigarh Area",
+          "addressLocality": "Chandigarh",
+          "addressCountry": "IN"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "29"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #1A3059;
+            --accent: #FFB800;
+            --dark: #121212;
+            --light: #FBFBFB;
+            --card-bg: #FFFFFF;
+            --navbar-bg: #1A3059;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--light); color: #333; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* Dynamic Background Slideshow (.jpg) */
+        @keyframes slideshow {
+            0% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
+            25% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('2.jpg'); }
+            50% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('3.jpg'); }
+            75% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('4.jpg'); }
+            100% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: var(--navbar-bg);
+            color: #FFFFFF;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+            color: #FFFFFF; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+        }
+
+        .logo-img { 
+            width: 45px; 
+            height: 45px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            margin-right: 10px; 
+        }
+        
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 90px 20px;
+            text-align: center;
+            animation: slideshow 20s infinite ease-in-out;
+            transition: background-image 1s ease-in-out;
+        }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 10px; color: var(--accent); text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
+        .hero-btns { display: flex; gap: 15px; justify-content: center; }
+
+        /* Container & Cards */
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            scroll-margin-top: 80px;
+        }
+        .card-header { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        .card-header h2 { color: var(--primary); font-size: 1.6rem; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 28px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-call { background: var(--accent); color: var(--primary); }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-gallery { background: var(--primary); color: white; margin-top: 20px; }
+
+        /* Feature Badges Grid */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
+        .feature-box { padding: 20px; background: #F4F7FC; border-radius: 10px; border-top: 3px solid var(--primary); }
+        .feature-box h3 { font-size: 1.1rem; color: var(--primary); margin: 8px 0 5px; }
+
+        /* Route Chips */
+        .routes-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .route-chip { background: #EAEFF8; color: var(--primary); font-weight: 600; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; }
+
+        /* Fare Calculator */
+        .calc-box { background: #F8F9FA; padding: 20px; border-radius: 10px; border: 1px solid #E0E0E0; }
+        .calc-box label { font-weight: bold; display: block; margin: 10px 0 5px; color: var(--primary); }
+        .calc-box select, .calc-box input { width: 100%; padding: 12px; border: 1px solid #CCC; border-radius: 6px; font-size: 1rem; }
+        .calc-result { font-weight: bold; color: var(--primary); font-size: 1.2rem; margin-top: 15px; text-align: center; }
+
+        /* Homepage Mini Gallery */
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .preview-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .preview-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .preview-item:hover img { transform: scale(1.05); }
+        .preview-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Review Styles */
+        .rating-summary { text-align: center; background: #FFF9E6; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #FFE082; }
+        .rating-summary h3 { font-size: 2.2rem; color: #D48800; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-card { background: #FAFAFA; border: 1px solid #EEE; padding: 20px; border-radius: 10px; position: relative; }
+        .review-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 8px; }
+        .review-author { font-weight: bold; color: var(--primary); margin-top: 10px; font-size: 0.95rem; }
+        .review-route { font-size: 0.8rem; color: #777; }
+
+        /* Form */
+        form label { display: block; margin: 12px 0 5px; font-weight: 600; }
+        form input, form textarea, form select { width: 100%; padding: 12px; border: 1px solid #DDD; border-radius: 6px; font-size: 1rem; }
+        form button { background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 15px; width: 100%; font-weight: bold; }
+
+        /* Footer */
+        footer { text-align: center; padding: 40px 20px; background: var(--dark); color: #AAA; font-size: 0.9rem; margin-top: 40px; }
+        footer a { color: var(--accent); font-weight: bold; text-decoration: none; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--navbar-bg);
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 14px 20px; text-align: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-btns { flex-direction: column; gap: 12px; }
+            .btn { width: 100%; padding: 18px; font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo-container">
+            <img src="logo.png" alt="Akrit Cabs & TravelsLogo" class="logo-img">
+            <span>Akrit Cabs & Travels</span>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="#" onclick="closeMenu()">Home</a>
+            <a href="#calculator" onclick="closeMenu()">Estimate Fare</a>
+            <a href="#why-us" onclick="closeMenu()">Why Choose Us</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="#reviews" onclick="closeMenu()">Reviews</a>
+            <a href="#contact" onclick="closeMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Dynamic Hero -->
+    <header class="hero">
+        <div class="container">
+            <h1>Safe, Reliable,Akrit Cabs & Travels</h1>
+            <p>Independent Driver Serving Chandigarh, Punjab & Himachal Pradesh</p>
+            <div class="hero-btns">
+                <a href="tel:+917986492813" class="btn btn-call">📞 Call Now: 7986492813</a>
+                <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Why Choose Us -->
+        <div class="card" id="why-us">
+            <div class="card-header">
+                <h2>Why Ride With Akrit Cabs & Travels?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div style="font-size:2rem;">🚗</div>
+                    <h3>Clean & Sanitized</h3>
+                    <p>Always spotless, AC, and well-maintained vehicle for high comfort.</p>
+                </div>
+                <div class="feature-box">
+                    <div style="font-size:2rem;">🛡️</div>
+                    <h3>Experienced Driver</h3>
+                    <p>Expert in hill driving (Shimla, Manali) and long highway routes.</p>
+                </div>
+                <div class="feature-box">
+                    <div style="font-size:2rem;">💰</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Fixed rates agreed beforehand with zero hidden surprises.</p>
+                </div>
+                <div class="feature-box">
+                    <div style="font-size:2rem;">⏰</div>
+                    <h3>24/7 Punctuality</h3>
+                    <p>Guaranteed on-time airport drop and early morning pickups.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Outstation Routes -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Popular Outstation Destinations</h2>
+            </div>
+            <p>Direct door-to-door private taxi service to key cities and tourist destinations:</p>
+            <div class="routes-flex">
+                <span class="route-chip">🏔️ Chandigarh ➔ Shimla</span>
+                <span class="route-chip">🏔️ Chandigarh ➔ Manali</span>
+                <span class="route-chip">✈️ Chandigarh ➔ Delhi Airport (IGI)</span>
+                <span class="route-chip">🛕 Chandigarh ➔ Amritsar</span>
+                <span class="route-chip">🌄 Chandigarh ➔ Dharamshala</span>
+                <span class="route-chip">🚕 Local City Sightseeing</span>
+            </div>
+        </div>
+
+        <!-- Quick Fare Estimator -->
+        <div class="card" id="calculator">
+            <div class="card-header">
+                <h2>Quick Fare Estimator</h2>
+            </div>
+            <div class="calc-box">
+                <label for="tripType">Select Trip Type:</label>
+                <select id="tripType" onchange="calculateFare()">
+                    <option value="airport">Airport Transfer (Chandigarh / Mohali)</option>
+                    <option value="outstation">Outstation Trip (Per KM estimate)</option>
+                    <option value="local">Local Full Day Rental (8 Hours / 80 KM)</option>
+                </select>
+
+                <div id="distanceGroup" style="display:none; margin-top:10px;">
+                    <label for="distance">Estimated Distance (in KM):</label>
+                    <input type="number" id="distance" placeholder="e.g. 300 for Shimla round trip" oninput="calculateFare()">
+                </div>
+
+                <div class="calc-result" id="fareDisplay">
+                    Estimated Rate: Contact for best price
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20confirm%20a%20fare%20quote" class="btn btn-whatsapp">Book via WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Highlights Preview Section -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Journey Highlights</h2>
+            </div>
+            <p>A sneak peek at our journeys across Punjab, Delhi & Himachal Pradesh:</p>
+            
+            <div class="gallery-preview">
+                <div class="preview-item">
+                    <img src="IMG-20260728-WA0074.jpg" alt="Ertiga parked in mountain pine woods">
+                    <div class="preview-caption">🌲 Pine Forest Mountain Trips</div>
+                </div>
+                <div class="preview-item">
+                    <img src="IMG-20260728-WA0076.jpg" alt="Ertiga on scenic highway">
+                    <div class="preview-caption">⛰️ Safe Hill Driving Expert</div>
+                </div>
+                <div class="preview-item">
+                    <img src="IMG-20260728-WA0081.jpg" alt="Cab parked at hill resort">
+                    <div class="preview-caption">🏡 Doorstep Resort Pickup & Drop</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="gallery.html" class="btn btn-gallery">📸 View Full Photo & Video Gallery →</a>
+            </div>
+        </div>
+
+        <!-- Live Review Section connected to Firestore -->
+        <div class="card" id="reviews">
+            <div class="card-header">
+                <h2>Customer Reviews</h2>
+            </div>
+            
+            <div class="rating-summary">
+                <h3 id="ratingAverage">4.9 ★★★★★</h3>
+                <p id="reviewCountText">Fetching verified passenger reviews...</p>
+            </div>
+
+            <div class="reviews-grid" id="reviewsContainer">
+                <p>Loading latest passenger reviews...</p>
+            </div>
+        </div>
+
+        <!-- Write a Review Form -->
+        <div class="card" id="contact">
+            <div class="card-header">
+                <h2>Rode With Us? Leave Feedback</h2>
+            </div>
+            <form id="reviewForm">
+                <label for="revName">Your Name</label>
+                <input type="text" id="revName" placeholder="e.g. Rahul Verma" required>
+
+                <label for="revRoute">Trip Destination / Route</label>
+                <input type="text" id="revRoute" placeholder="e.g. Chandigarh to Manali" required>
+
+                <label for="revRating">Rating</label>
+                <select id="revRating">
+                    <option value="5">★★★★★ (5 Stars - Excellent)</option>
+                    <option value="4">★★★★☆ (4 Stars - Good)</option>
+                    <option value="3">★★★☆☆ (3 Stars - Average)</option>
+                </select>
+
+                <label for="revMessage">Your Experience</label>
+                <textarea id="revMessage" rows="4" placeholder="How was your ride?" required></textarea>
+
+                <button type="submit" id="submitBtn">Submit Feedback</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Driver Akrit Pal Singh | Phone: +91 7986492813</p>
+        <p>Email: <a href="mailto:singhakritpal9@gmail.com">singhakritpal9@gmail.com</a></p>
+        <p style="margin-top: 8px;">Instagram: <a href="https://www.instagram.com/akrit_airline_4218/" target="_blank">@akrit_airline_4218</a></p>
+    </footer>
+
+    <!-- Firebase SDK (Real-time Firestore Integration) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyACzD4coe9IvkPV1fwRR8Zu_JzrIcBZUXs",
+            authDomain: "akrit-airline.firebaseapp.com",
+            projectId: "akrit-airline",
+            storageBucket: "akrit-airline.firebasestorage.app",
+            messagingSenderId: "982289311462",
+            appId: "1:982289311462:web:37a8ab9e9ef5dac3913d27",
+            measurementId: "G-6D2W3M3BF9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const reviewsRef = collection(db, "reviews");
+
+        const q = query(reviewsRef, orderBy("timestamp", "desc"));
+        onSnapshot(q, (snapshot) => {
+            const container = document.getElementById("reviewsContainer");
+            container.innerHTML = "";
+
+            if (snapshot.empty) {
+                container.innerHTML = "<p>No reviews posted yet. Be the first to leave one!</p>";
+                document.getElementById("reviewCountText").innerText = "0 reviews submitted";
+                return;
+            }
+
+            let totalRating = 0;
+            let count = 0;
+
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                count++;
+                totalRating += (data.rating || 5);
+                const stars = "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+
+                const cardHtml = `
+                    <div class="review-card">
+                        <div class="review-stars">${stars}</div>
+                        <p>"${data.message}"</p>
+                        <div class="review-author">${data.name}</div>
+                        <div class="review-route">Route: ${data.route || 'General Ride'}</div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+
+            const avg = (totalRating / count).toFixed(1);
+            document.getElementById("ratingAverage").innerText = `${avg} ★★★★★`;
+            document.getElementById("reviewCountText").innerText = `Based on ${count} verified passenger ride(s)`;
+        });
+
+        document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.innerText = "Posting Review...";
+            submitBtn.disabled = true;
+
+            try {
+                await addDoc(reviewsRef, {
+                    name: document.getElementById("revName").value.trim(),
+                    route: document.getElementById("revRoute").value.trim(),
+                    rating: parseInt(document.getElementById("revRating").value),
+                    message: document.getElementById("revMessage").value.trim(),
+                    timestamp: serverTimestamp()
+                });
+
+                alert("Thank you! Your feedback has been published live on the site.");
+                document.getElementById("reviewForm").reset();
+            } catch (error) {
+                console.error("Error writing review:", error);
+                alert("Could not post review. Please check your Firestore security rules.");
+            } finally {
+                submitBtn.innerText = "Submit Feedback";
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+
+    <!-- UI Interactivity Scripts -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("navLinks").classList.remove("active");
+        }
+
+        function calculateFare() {
+            const tripType = document.getElementById("tripType").value;
+            const distanceGroup = document.getElementById("distanceGroup");
+            const fareDisplay = document.getElementById("fareDisplay");
+
+            if (tripType === "outstation") {
+                distanceGroup.style.display = "block";
+                const dist = parseFloat(document.getElementById("distance").value) || 0;
+                if (dist > 0) {
+                    const est = dist * 12;
+                    fareDisplay.innerText = "Estimated Fare: ~ ₹" + est.toLocaleString('en-IN') + " (Excl. Tolls)";
+                } else {
+                    fareDisplay.innerText = "Enter estimated distance above";
+                }
+            } else if (tripType === "airport") {
+                distanceGroup.style.display = "none";
+                fareDisplay.innerText = "Airport Transfers Start From ~ ₹500 - ₹800";
+            } else if (tripType === "local") {
+                distanceGroup.style.display = "none";
+                fareDisplay.innerText = "Local Full Day Package: ~ ₹2,200 (8 Hrs / 80 KM)";
+            }
+        }
+    </script>
+</body>
+</html>
