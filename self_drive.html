@@ -75,6 +75,7 @@
             border: 2px solid var(--accent);
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         .marquee-item:hover {
             transform: scale(1.03);
@@ -91,8 +92,26 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* Section Titles */
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
         /* Fleet Cards Grid */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 20px; }
         .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .fleet-card {
@@ -140,6 +159,57 @@
         
         .btn-story-trigger { background: var(--primary); color: #FFFFFF; }
         .btn-story-trigger:hover { background: #122240; }
+
+        /* Custom Builds Section */
+        .custom-builds-section {
+            background: #0B132B;
+            color: #FFFFFF;
+            padding: 60px 20px;
+            margin-top: 50px;
+            border-radius: 24px;
+        }
+        .custom-builds-section .section-title { color: #FFFFFF; }
+        .custom-builds-section .section-subtitle { color: #94A3B8; }
+        
+        .custom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .custom-card {
+            background: #1C2541;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .custom-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        }
+        .custom-card .fleet-title { color: #FFFFFF; }
+        .custom-card .pill { background: rgba(255, 255, 255, 0.08); color: #E2E8F0; border-color: rgba(255, 255, 255, 0.15); }
+        .badge-custom {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: #0F172A;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 5;
+        }
 
         /* Instagram Story Fullscreen Viewer */
         .story-modal {
@@ -239,33 +309,38 @@
 
     <!-- Page Header & Floating Image Banner -->
     <header class="page-header">
-        <h1>Self-Drive Luxury Fleet</h1>
-        <p>Experience unmatched presence with our elite lineup of luxury vehicles.</p>
+        <h1>Self-Drive Fleet</h1>
+        <p>Experience unmatched presence with our elite lineup of luxury vehicles & custom builds.</p>
 
         <!-- Continuous Smooth Floating Banner -->
         <div class="marquee-container">
             <div class="marquee-track">
                 <!-- Group 1 -->
+                <div class="marquee-item" onclick="openStory('willysJeep')"><img src="luxury_images/IMG-20260801-WA0105 (1).jpg" alt="Vintage Willys Jeep"></div>
                 <div class="marquee-item" onclick="openStory('jaguar')"><img src="luxury_images/IMG-20260801-WA0053.jpg" alt="Jaguar XJL"></div>
+                <div class="marquee-item" onclick="openStory('monsterThar')"><img src="luxury_images/IMG-20260801-WA0126.jpg" alt="Monster Open-Top Thar"></div>
                 <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0035.jpg" alt="Range Rover Sport"></div>
                 <div class="marquee-item" onclick="openStory('maybach')"><img src="luxury_images/IMG-20260801-WA0040.jpg" alt="Mercedes-Maybach"></div>
-                <div class="marquee-item" onclick="openStory('mustang')"><img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Ford Mustang GT"></div>
-                <div class="marquee-item" onclick="openStory('defender')"><img src="luxury_images/IMG-20260801-WA0062.jpg" alt="Land Rover Defender"></div>
-                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0038.jpg" alt="Range Rover Front"></div>
+                <div class="marquee-item" onclick="openStory('fortuner')"><img src="luxury_images/IMG-20260801-WA0109.jpg" alt="Toyota Fortuner"></div>
 
                 <!-- Duplicate Group for Infinite Loop -->
+                <div class="marquee-item" onclick="openStory('willysJeep')"><img src="luxury_images/IMG-20260801-WA0105 (1).jpg" alt="Vintage Willys Jeep"></div>
                 <div class="marquee-item" onclick="openStory('jaguar')"><img src="luxury_images/IMG-20260801-WA0053.jpg" alt="Jaguar XJL"></div>
+                <div class="marquee-item" onclick="openStory('monsterThar')"><img src="luxury_images/IMG-20260801-WA0126.jpg" alt="Monster Open-Top Thar"></div>
                 <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0035.jpg" alt="Range Rover Sport"></div>
                 <div class="marquee-item" onclick="openStory('maybach')"><img src="luxury_images/IMG-20260801-WA0040.jpg" alt="Mercedes-Maybach"></div>
-                <div class="marquee-item" onclick="openStory('mustang')"><img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Ford Mustang GT"></div>
-                <div class="marquee-item" onclick="openStory('defender')"><img src="luxury_images/IMG-20260801-WA0062.jpg" alt="Land Rover Defender"></div>
-                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0038.jpg" alt="Range Rover Front"></div>
+                <div class="marquee-item" onclick="openStory('fortuner')"><img src="luxury_images/IMG-20260801-WA0109.jpg" alt="Toyota Fortuner"></div>
             </div>
         </div>
     </header>
 
-    <!-- Main Container Cards -->
+    <!-- Main Container Cards (Luxury Fleet) -->
     <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title">Luxury Saloons & SUVs</h2>
+            <p class="section-subtitle">Chauffeur and self-drive luxury experience for weddings and VIP travel</p>
+        </div>
+
         <div class="fleet-grid">
 
             <!-- Jaguar XJL -->
@@ -333,6 +408,28 @@
                 </div>
             </div>
 
+            <!-- Toyota Fortuner -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('fortuner')">
+                    <img src="luxury_images/IMG-20260801-WA0109.jpg" alt="Toyota Fortuner" class="fleet-img">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Toyota Fortuner</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">Premium SUV</span>
+                        <span class="pill">Floral Doli Decor</span>
+                        <span class="pill">High Stance</span>
+                        <span class="pill">4x4 Capability</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('fortuner')">View Photo Story Collection</button>
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Toyota%20Fortuner" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Mustang -->
             <div class="fleet-card">
                 <div class="image-wrapper" onclick="openStory('mustang')">
@@ -348,6 +445,7 @@
                     </div>
 
                     <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('mustang')">View Photo Story Collection</button>
                         <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Ford%20Mustang" class="btn btn-whatsapp">Book via WhatsApp</a>
                     </div>
                 </div>
@@ -367,12 +465,72 @@
                     </div>
 
                     <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('defender')">View Photo Story Collection</button>
                         <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Defender" class="btn btn-whatsapp">Book via WhatsApp</a>
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <!-- Dedicated Section: Custom Thrill Rides -->
+        <section class="custom-builds-section">
+            <div class="section-title-wrap">
+                <h2 class="section-title">The Beast Garage</h2>
+                <p class="section-subtitle">Custom-built modified open-top Jeeps & military vintage machines</p>
+            </div>
+
+            <div class="custom-grid">
+
+                <!-- Vintage Military Willys Jeep -->
+                <div class="custom-card">
+                    <div class="image-wrapper" onclick="openStory('willysJeep')">
+                        <span class="badge-custom">Vintage 1945 Build</span>
+                        <img src="luxury_images/IMG-20260801-WA0120.jpg" alt="Vintage Willys Military Jeep" class="fleet-img">
+                    </div>
+                    <div class="fleet-details">
+                        <div class="fleet-title">1945 Willys Military Edition</div>
+                        
+                        <div class="specs-pills">
+                            <span class="pill">Army Green Matte</span>
+                            <span class="pill">Open Top</span>
+                            <span class="pill">Custom Off-Road Tyres</span>
+                            <span class="pill">Vintage Brass Emblems</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-story-trigger" onclick="openStory('willysJeep')">View Photo Story Collection</button>
+                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Vintage%20Willys%20Jeep" class="btn btn-whatsapp">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Top Custom Monster Thar / Jeep -->
+                <div class="custom-card">
+                    <div class="image-wrapper" onclick="openStory('monsterThar')">
+                        <span class="badge-custom">Custom Off-Road</span>
+                        <img src="luxury_images/IMG-20260801-WA0126.jpg" alt="Monster Custom Jeep" class="fleet-img">
+                    </div>
+                    <div class="fleet-details">
+                        <div class="fleet-title">Nardo Grey Monster Jeep</div>
+                        
+                        <div class="specs-pills">
+                            <span class="pill">Tractor Tread Tyres</span>
+                            <span class="pill">Open Cruiser</span>
+                            <span class="pill">Custom Diamond Stitching</span>
+                            <span class="pill">Vertical Stack Exhaust</span>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-story-trigger" onclick="openStory('monsterThar')">View Photo Story Collection</button>
+                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Monster%20Custom%20Jeep" class="btn btn-whatsapp">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
     <!-- Fullscreen Story Viewer Modal -->
@@ -424,6 +582,12 @@
                 "luxury_images/IMG-20260801-WA0042.jpg",
                 "luxury_images/IMG-20260801-WA0045.jpg"
             ],
+            fortuner: [
+                "luxury_images/IMG-20260801-WA0109.jpg",
+                "luxury_images/IMG-20260801-WA0106.jpg",
+                "luxury_images/IMG-20260801-WA0107.jpg",
+                "luxury_images/IMG-20260801-WA0108.jpg"
+            ],
             mustang: [
                 "luxury_images/IMG-20260801-WA0056.jpg",
                 "luxury_images/IMG-20260801-WA0057.jpg",
@@ -434,6 +598,19 @@
                 "luxury_images/IMG-20260801-WA0061.jpg",
                 "luxury_images/IMG-20260801-WA0062.jpg",
                 "luxury_images/IMG-20260801-WA0060.jpg"
+            ],
+            willysJeep: [
+                "luxury_images/IMG-20260801-WA0111.jpg",
+                "luxury_images/IMG-20260801-WA0117.jpg",
+                "luxury_images/IMG-20260801-WA0119.jpg",
+                "luxury_images/IMG-20260801-WA0120.jpg",
+                
+            ],
+            monsterThar: [
+                "luxury_images/IMG-20260801-WA0122.jpg",
+                "luxury_images/IMG-20260801-WA0125.jpg",
+                "luxury_images/IMG-20260801-WA0126.jpg",
+                
             ]
         };
 
