@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Drive Luxury Fleet | Akrit Cabs & Travels</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+
+    <style>
+        :root {
+            --primary: #1A3059;
+            --accent: #D4AF37;
+            --light-bg: #FFFFFF;
+            --card-bg: #FAFAFA;
+            --border-color: #E2E8F0;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--light-bg); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* Header Navigation */
+        .navbar {
+            background: #FFFFFF;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; color: var(--primary); font-weight: 800; font-size: 1.1rem; }
+        .logo-img { width: 42px; height: 42px; object-fit: cover; border-radius: 50%; margin-right: 12px; border: 2px solid var(--accent); }
+        .nav-links a { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Page Hero & Continuous Floating Carousel */
+        .page-header {
+            padding: 40px 0 30px;
+            text-align: center;
+            background: #F8FAFC;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        .page-header h1 { font-size: 2.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; margin-bottom: 8px; }
+        .page-header p { font-size: 1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 25px; padding: 0 20px; }
+
+        /* Continuous Marquee Slider */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            padding: 10px 0;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: floatImages 25s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .marquee-item {
+            width: 300px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .marquee-item:hover {
+            transform: scale(1.03);
+        }
+        .marquee-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes floatImages {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Fleet Cards Grid */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; }
+        .fleet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .fleet-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        .fleet-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .image-wrapper { position: relative; cursor: pointer; overflow: hidden; height: 260px; }
+        .fleet-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .fleet-card:hover .fleet-img { transform: scale(1.05); }
+
+        .fleet-details { padding: 24px; }
+        .fleet-title { font-size: 1.35rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .fleet-price { font-size: 1.4rem; color: var(--accent); font-weight: 800; margin-bottom: 12px; }
+
+        .specs-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .pill { background: #FFFFFF; color: var(--text-muted); font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; font-weight: 600; border: 1px solid var(--border-color); }
+
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-whatsapp { background: #25D366; color: #FFFFFF; }
+        .btn-whatsapp:hover { background: #1eb957; }
+        
+        .btn-story-trigger { background: var(--primary); color: #FFFFFF; }
+        .btn-story-trigger:hover { background: #122240; }
+
+        /* Instagram Story Fullscreen Viewer */
+        .story-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2500;
+            justify-content: center;
+            align-items: center;
+        }
+        .story-modal.active { display: flex; }
+
+        .story-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            height: 90vh;
+            max-height: 820px;
+            background: #000000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-img-container { width: 100%; height: 100%; position: relative; }
+        .story-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Story Progress Bar */
+        .story-progress-bar {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            gap: 6px;
+            z-index: 2600;
+        }
+        .progress-segment {
+            height: 3px;
+            flex: 1;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-segment-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.1s linear;
+        }
+        .progress-segment.completed .progress-segment-fill { width: 100%; }
+
+        /* Click Navigation Zones */
+        .click-zone { position: absolute; top: 0; bottom: 0; width: 40%; z-index: 2550; cursor: pointer; }
+        .click-left { left: 0; }
+        .click-right { right: 0; }
+
+        .close-story-btn {
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            background: rgba(0,0,0,0.5);
+            color: #FFFFFF;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 2650;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        footer { text-align: center; padding: 40px 20px; background: #0F172A; color: #94A3B8; font-size: 0.85rem; margin-top: 40px; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Akrit Logo" class="logo-img">
+            <span>Akrit Cabs & Travels</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Page Header & Floating Image Banner -->
+    <header class="page-header">
+        <h1>Self-Drive Luxury Fleet</h1>
+        <p>Experience unmatched presence with our elite lineup of luxury vehicles.</p>
+
+        <!-- Continuous Smooth Floating Banner -->
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <!-- Group 1 -->
+                <div class="marquee-item" onclick="openStory('jaguar')"><img src="luxury_images/IMG-20260801-WA0053.jpg" alt="Jaguar XJL"></div>
+                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0035.jpg" alt="Range Rover Sport"></div>
+                <div class="marquee-item" onclick="openStory('maybach')"><img src="luxury_images/IMG-20260801-WA0040.jpg" alt="Mercedes-Maybach"></div>
+                <div class="marquee-item" onclick="openStory('mustang')"><img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Ford Mustang GT"></div>
+                <div class="marquee-item" onclick="openStory('defender')"><img src="luxury_images/IMG-20260801-WA0062.jpg" alt="Land Rover Defender"></div>
+                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0038.jpg" alt="Range Rover Front"></div>
+
+                <!-- Duplicate Group for Infinite Loop -->
+                <div class="marquee-item" onclick="openStory('jaguar')"><img src="luxury_images/IMG-20260801-WA0053.jpg" alt="Jaguar XJL"></div>
+                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0035.jpg" alt="Range Rover Sport"></div>
+                <div class="marquee-item" onclick="openStory('maybach')"><img src="luxury_images/IMG-20260801-WA0040.jpg" alt="Mercedes-Maybach"></div>
+                <div class="marquee-item" onclick="openStory('mustang')"><img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Ford Mustang GT"></div>
+                <div class="marquee-item" onclick="openStory('defender')"><img src="luxury_images/IMG-20260801-WA0062.jpg" alt="Land Rover Defender"></div>
+                <div class="marquee-item" onclick="openStory('rangeRover')"><img src="luxury_images/IMG-20260801-WA0038.jpg" alt="Range Rover Front"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container Cards -->
+    <div class="container">
+        <div class="fleet-grid">
+
+            <!-- Jaguar XJL -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('jaguar')">
+                    <img src="luxury_images/IMG-20260801-WA0053.jpg" alt="Jaguar XJL" class="fleet-img">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Jaguar XJL</div>
+                    <div class="fleet-price">₹18,000 / Day</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">Long Wheelbase</span>
+                        <span class="pill">Dual Sunroof</span>
+                        <span class="pill">Beige Leather</span>
+                        <span class="pill">VIP Doli Decor</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('jaguar')">View Photo Story Collection</button>
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Jaguar%20XJL" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Range Rover Sport -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('rangeRover')">
+                    <img src="luxury_images/IMG-20260801-WA0035.jpg" alt="Range Rover Sport" class="fleet-img">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Range Rover Sport</div>
+                    <div class="fleet-price">₹18,000 / Day</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">Panoramic Sunroof</span>
+                        <span class="pill">Beige Interior</span>
+                        <span class="pill">Wedding Decor Available</span>
+                        <span class="pill">4x4 AWD</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('rangeRover')">View Photo Story Collection</button>
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Range%20Rover%20Sport" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mercedes Maybach -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('maybach')">
+                    <img src="luxury_images/IMG-20260801-WA0040.jpg" alt="Mercedes Maybach" class="fleet-img">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Mercedes-Maybach</div>
+                    <div class="fleet-price">₹30,000 / Day</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">Executive Saloon</span>
+                        <span class="pill">Floral Doli Decor</span>
+                        <span class="pill">Ultra Comfort</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-story-trigger" onclick="openStory('maybach')">View Photo Story Collection</button>
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Mercedes%20Maybach" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mustang -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('mustang')">
+                    <img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Ford Mustang" class="fleet-img" onerror="this.src='https://via.placeholder.com/400x260?text=Ford+Mustang+V8'">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Ford Mustang GT</div>
+                    <div class="fleet-price">₹60,000 / Day</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">V8 Muscle Engine</span>
+                        <span class="pill">Sports Coupe</span>
+                        <span class="pill">Iconic Exhaust</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Ford%20Mustang" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Land Rover Defender -->
+            <div class="fleet-card">
+                <div class="image-wrapper" onclick="openStory('defender')">
+                    <img src="luxury_images/IMG-20260801-WA0062.jpg" alt="Land Rover Defender" class="fleet-img" onerror="this.src='https://via.placeholder.com/400x260?text=Defender+Luxury+SUV'">
+                </div>
+                <div class="fleet-details">
+                    <div class="fleet-title">Land Rover Defender</div>
+                    <div class="fleet-price">₹50,000 / Day</div>
+                    
+                    <div class="specs-pills">
+                        <span class="pill">Flagship Luxury SUV</span>
+                        <span class="pill">Commanding Stance</span>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20book%20the%20Defender" class="btn btn-whatsapp">Book via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Fullscreen Story Viewer Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-wrapper">
+            <button class="close-story-btn" onclick="closeStory()">&times;</button>
+            <div class="story-progress-bar" id="storyProgressBar"></div>
+            
+            <div class="click-zone click-left" onclick="prevStory()"></div>
+            <div class="click-zone click-right" onclick="nextStory()"></div>
+
+            <div class="story-img-container">
+                <img src="" id="activeStoryImg" class="story-img" alt="Luxury Car Story View">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Akrit Cabs & Travels | Premium Self-Drive Fleet Jalandhar & Punjab</p>
+        <p>Call / WhatsApp: <a href="tel:+917986492813">+91 7986492813</a></p>
+    </footer>
+
+    <script>
+        // Folder directory: luxury_images/
+        const carStories = {
+            jaguar: [
+                "luxury_images/IMG-20260801-WA0053.jpg",
+                "luxury_images/IMG-20260801-WA0043.jpg",
+                "luxury_images/IMG-20260801-WA0046.jpg",
+                "luxury_images/IMG-20260801-WA0044.jpg",
+                "luxury_images/IMG-20260801-WA0048.jpg",
+                "luxury_images/IMG-20260801-WA0049.jpg",
+                "luxury_images/IMG-20260801-WA0050.jpg",
+                "luxury_images/IMG-20260801-WA0052.jpg"
+            ],
+            rangeRover: [
+                "luxury_images/IMG-20260801-WA0035.jpg",
+                "luxury_images/IMG-20260801-WA0036.jpg",
+                "luxury_images/IMG-20260801-WA0038.jpg",
+                "luxury_images/IMG-20260801-WA0031.jpg",
+                "luxury_images/IMG-20260801-WA0032.jpg",
+                "luxury_images/IMG-20260801-WA0033.jpg",
+                "luxury_images/IMG-20260801-WA0034.jpg"
+            ],
+            maybach: [
+                "luxury_images/IMG-20260801-WA0040.jpg",
+                "luxury_images/IMG-20260801-WA0041.jpg",
+                "luxury_images/IMG-20260801-WA0042.jpg",
+                "luxury_images/IMG-20260801-WA0045.jpg"
+            ],
+            mustang: [
+                "luxury_images/IMG-20260801-WA0056.jpg",
+                "luxury_images/IMG-20260801-WA0057.jpg",
+                "luxury_images/IMG-20260801-WA0058.jpg",
+                "luxury_images/IMG-20260801-WA0059.jpg"
+            ],
+            defender: [
+                "luxury_images/IMG-20260801-WA0061.jpg",
+                "luxury_images/IMG-20260801-WA0062.jpg",
+                "luxury_images/IMG-20260801-WA0060.jpg"
+            ]
+        };
+
+        let currentCar = '';
+        let currentIndex = 0;
+
+        function openStory(carKey) {
+            if (!carStories[carKey]) return;
+            currentCar = carKey;
+            currentIndex = 0;
+            document.getElementById('storyModal').classList.add('active');
+            renderStory();
+        }
+
+        function closeStory() {
+            document.getElementById('storyModal').classList.remove('active');
+        }
+
+        function renderStory() {
+            const list = carStories[currentCar];
+            document.getElementById('activeStoryImg').src = list[currentIndex];
+
+            const barContainer = document.getElementById('storyProgressBar');
+            barContainer.innerHTML = '';
+            
+            list.forEach((_, idx) => {
+                const seg = document.createElement('div');
+                seg.className = 'progress-segment' + (idx < currentIndex ? ' completed' : '');
+                
+                const fill = document.createElement('div');
+                fill.className = 'progress-segment-fill';
+                if (idx === currentIndex) fill.style.width = '100%';
+                
+                seg.appendChild(fill);
+                barContainer.appendChild(seg);
+            });
+        }
+
+        function nextStory() {
+            const list = carStories[currentCar];
+            if (currentIndex < list.length - 1) {
+                currentIndex++;
+                renderStory();
+            } else {
+                closeStory();
+            }
+        }
+
+        function prevStory() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderStory();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('storyModal').classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextStory();
+            if (e.key === 'ArrowLeft') prevStory();
+            if (e.key === 'Escape') closeStory();
+        });
+    </script>
+</body>
+</html>
