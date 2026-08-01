@@ -4,114 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journey Gallery | Akrit Cabs & Travels</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Akrit Travels" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <style>
         :root {
             --primary: #1A3059;
+            --primary-light: #25427a;
             --accent: #FFB800;
-            --dark: #121212;
-            --light: #FBFBFB;
+            --dark: #0f172a;
+            --light: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --navbar-bg: rgba(26, 48, 89, 0.95);
+            --whatsapp-green: #25D366;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-        body { background: var(--light); color: #333; line-height: 1.6; }
 
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            background: var(--light); 
+            color: #334155; 
+            line-height: 1.6; 
+            padding-bottom: 75px; /* Space for sticky mobile bottom bar */
+        }
+
+        /* Navbar */
         .navbar {
-            background: var(--primary);
-            color: white;
-            padding: 15px 20px;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #FFFFFF;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
         }
-        .navbar a { color: white; text-decoration: none; font-weight: bold; }
-        .back-btn { background: var(--accent); color: var(--primary) !important; padding: 8px 16px; border-radius: 6px; }
 
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+            color: #FFFFFF; 
+            font-weight: 700; 
+            font-size: 1.15rem; 
+            gap: 10px;
+        }
+
+        .back-btn { 
+            background: var(--accent); 
+            color: var(--primary) !important; 
+            padding: 10px 18px; 
+            border-radius: var(--radius-md); 
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .back-btn:active { transform: scale(0.96); }
+
+        /* Page Banner Title */
         .header-title {
             text-align: center;
-            padding: 40px 20px 20px;
-            background: #fff;
-            border-bottom: 1px solid #E0E0E0;
+            padding: 40px 20px 30px;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E2E8F0;
+            box-shadow: var(--shadow-sm);
         }
-        .header-title h1 { color: var(--primary); font-size: 2.2rem; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+        .header-title h1 { 
+            color: var(--primary); 
+            font-size: clamp(1.75rem, 4vw, 2.4rem); 
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
 
-        /* Media Grid */
-        .section-title { color: var(--primary); margin: 30px 0 15px; font-size: 1.5rem; border-left: 4px solid var(--accent); padding-left: 10px; }
-        
+        .header-title p { 
+            color: #64748B; 
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container Grid Layouts */
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 24px 16px; 
+        }
+
+        .section-title { 
+            color: var(--primary); 
+            margin: 32px 0 18px; 
+            font-size: clamp(1.2rem, 3vw, 1.5rem); 
+            font-weight: 700;
+            position: relative;
+            padding-left: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 5px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Photo Cards Grid */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
         }
+
         .photo-card {
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            background: #000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: var(--dark);
+            box-shadow: var(--shadow-md);
             position: relative;
+            aspect-ratio: 4 / 3;
+            border: 1px solid #E2E8F0;
         }
+
         .photo-card img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
         }
+
         .photo-card:hover img { transform: scale(1.05); }
+
         .photo-card .label {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            color: white;
-            padding: 12px;
+            background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+            color: #FFFFFF;
+            padding: 20px 14px 12px;
             font-size: 0.9rem;
             font-weight: 600;
         }
 
-        /* Video Reel Grid */
+        /* Video Reel Cards Grid */
         .reel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
         }
+
         .reel-card {
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             overflow: hidden;
             background: #000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #E2E8F0;
         }
+
         .reel-card video {
             width: 100%;
-            height: 420px;
+            aspect-ratio: 9 / 14;
             object-fit: cover;
             display: block;
+            background-color: #000;
         }
+
         .reel-title {
             background: var(--primary);
-            color: #fff;
-            padding: 10px;
+            color: #FFFFFF;
+            padding: 12px 14px;
             text-align: center;
             font-weight: 600;
             font-size: 0.9rem;
         }
 
-        footer { text-align: center; padding: 30px; background: var(--dark); color: #aaa; margin-top: 50px; }
-        footer a { color: var(--accent); }
+        /* Sticky Mobile Action Bar */
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #FFFFFF;
+            padding: 10px 16px;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+            z-index: 999;
+            gap: 12px;
+        }
+
+        .mobile-bottom-bar .btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 0.95rem;
+            border-radius: var(--radius-md);
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .btn-call { background: var(--accent); color: var(--primary); }
+        .btn-whatsapp { background: var(--whatsapp-green); color: white; }
+
+        /* Footer */
+        footer { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: var(--dark); 
+            color: #94A3B8; 
+            font-size: 0.9rem; 
+            margin-top: 50px; 
+        }
+
+        footer a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .mobile-bottom-bar { display: flex; }
+            .navbar { padding: 12px 16px; }
+            .header-title { padding: 28px 16px 20px; }
+            .photo-grid, .reel-grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+            .photo-card { aspect-ratio: 16 / 10; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <nav class="navbar">
-        <a href="index.html">🚕Akrit Cabs & Travels</a>
-        <a href="index.html" class="back-btn">← Back to Home</a>
+        <a href="index.html" class="logo-container">
+            <span>🚕 Akrit Travels</span>
+        </a>
+        <a href="index.html" class="back-btn">← Home</a>
     </nav>
 
+    <!-- Header Section -->
     <div class="header-title">
         <h1>Tour & Route Gallery</h1>
-        <p>Real moments from our outstation rides across Punjab, Delhi & Himachal Pradesh</p>
+        <p>Real moments and journey stories from our rides across Punjab, Delhi & Himachal Pradesh</p>
     </div>
 
     <div class="container">
@@ -120,23 +285,23 @@
         <h2 class="section-title">📸 Scenic Routes & Vehicle</h2>
         <div class="photo-grid">
             <div class="photo-card">
-                <img src="IMG-20260728-WA0074.jpg" alt="Pine Woods Ertiga">
+                <img src="rental_images/IMG-20260728-WA0074.jpg" alt="Pine Woods Ertiga" loading="lazy">
                 <div class="label">🌲 Himachal Pine Forest Drive</div>
             </div>
             <div class="photo-card">
-                <img src="IMG-20260728-WA0078.jpg" alt="Mountain Road Expressway">
+                <img src="rental_images/IMG-20260728-WA0078.jpg" alt="Mountain Road Expressway" loading="lazy">
                 <div class="label">⛰️ Scenic Highway Trips</div>
             </div>
             <div class="photo-card">
-                <img src="IMG-20260728-WA0081.jpg" alt="Resort Drop-off">
+                <img src="rental_images/IMG-20260728-WA0081.jpg" alt="Resort Drop-off" loading="lazy">
                 <div class="label">🏡 Resort & Hotel Drop-off</div>
             </div>
             <div class="photo-card">
-                <img src="IMG-20260728-WA0076.jpg" alt="Lush Green Pine Valley">
+                <img src="rental_images/IMG-20260728-WA0076.jpg" alt="Lush Green Pine Valley" loading="lazy">
                 <div class="label">🍃 Khajjiar & Hill Valley Sightseeing</div>
             </div>
             <div class="photo-card">
-                <img src="IMG-20260728-WA0080.jpg" alt="Fueling Stop in Punjab">
+                <img src="rental_images/IMG-20260728-WA0080.jpg" alt="Fueling Stop in Punjab" loading="lazy">
                 <div class="label">⛽ Clean, Maintained & Prepared for Long Drives</div>
             </div>
         </div>
@@ -146,19 +311,22 @@
         <div class="reel-grid">
             <div class="reel-card">
                 <video controls muted preload="metadata">
-                    <source src="VID-20260728-WA0085.mp4" type="video/mp4">
+                    <source src="rental_images/VID-20260728-WA0085.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <div class="reel-title">🌲 Cruising Through Pine Forests</div>
             </div>
             <div class="reel-card">
                 <video controls muted preload="metadata">
-                    <source src="VID-20260728-WA0083.mp4" type="video/mp4">
+                    <source src="rental_images/VID-20260728-WA0083.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <div class="reel-title">☕ Scenic Cafe Stopover</div>
             </div>
             <div class="reel-card">
                 <video controls muted preload="metadata">
-                    <source src="VID-20260728-WA0082.mp4" type="video/mp4">
+                    <source src="rental_images/VID-20260728-WA0082.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <div class="reel-title">🌃 Night Outstation Ride (Greater Kailash, Delhi)</div>
             </div>
@@ -166,9 +334,20 @@
 
     </div>
 
+    <!-- Mobile Sticky Action Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="tel:+917986492813" class="btn btn-call">
+            <span>📞</span> Call Now
+        </a>
+        <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20saw%20your%20gallery%20and%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">
+            <span>💬</span> WhatsApp
+        </a>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>Driver Akrit Pal Singh | Phone: +91 7986492813</p>
-        <p>Instagram: <a href="https://www.instagram.com/akrit_airline_4218/" target="_blank">@akrit_airline_4218</a></p>
+        <p style="margin-top: 8px;">Instagram: <a href="https://www.instagram.com/akrit_airline_4218/" target="_blank">@akrit_airline_4218</a></p>
     </footer>
 
 </body>
