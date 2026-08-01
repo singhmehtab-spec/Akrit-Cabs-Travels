@@ -87,20 +87,13 @@
 
 .slide {
   width: 100%;
-  height: 100vh; /* or set your preferred hero height like 500px */
-  
-  /* Ensures background images scale properly without stretching */
+  height: 100vh;
   background-size: cover;
-  
-  /* Centers the image subject so side angles don't cut off key parts */
   background-position: center center;
   background-repeat: no-repeat;
-  
-  /* Keeps transition smooth if sliding */
   transition: background-image 0.5s ease-in-out;
 }
 
-/* EXAMPLE SLIDE USAGE (From your code snippet) */
 .slide-1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
                     url('luxury_images/IMG-20260801-WA0029.jpg');
@@ -111,41 +104,6 @@
                     url('luxury_images/IMG-20260801-WA0038.jpg');
 }
 
-
-/* ==========================================
-   2. VEHICLE RENTAL CARDS (IMAGE FIX)
-   ========================================== */
-
-/* Container for your rental cards */
-.rental-card {
-  border-radius: 12px;
-  overflow: hidden; /* Prevents image corners from overflowing rounded borders */
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* HTML <img> tags inside your rental cards */
-.rental-card img {
-  width: 100%;
-  height: 220px; /* Gives all card images a uniform height */
-  
-  /* Maintains landscape aspect ratio and crops cleanly */
-  object-fit: cover; 
-  
-  /* Shifts focus to center-top where cars/vans are usually angled */
-  object-position: center 40%; 
-  
-  display: block;
-}
-
-/* Optional: If you prefer displaying FULL uncropped images inside cards */
-/*
-.rental-card img.fit-contain {
-  object-fit: contain;
-  background-color: #f8f9fa;
-}
-*/
-        
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--accent); }
@@ -199,17 +157,16 @@
             cursor: pointer;
         }
 
-        /* Smooth Hero Slideshow Container (6-Slide Configuration) */
+        /* Smooth Hero Slideshow Container */
         .hero {
             position: relative;
             color: white;
             padding: 110px 20px;
             text-align: center;
             overflow: hidden;
-            background: #000; /* Dark background placeholder */
+            background: #000;
         }
 
-        /* Slide Base Styles */
         .hero-bg-slide {
             position: absolute;
             top: 0;
@@ -220,13 +177,10 @@
             background-position: center;
             background-repeat: no-repeat;
             opacity: 0;
-            animation: smoothFade 30s infinite ease-in-out; /* 30s total rotation for 6 slides (5s per slide) */
+            animation: smoothFade 30s infinite ease-in-out;
             z-index: 1;
         }
 
-        /* =========================================================
-           PASTE YOUR IMAGE PATHS HERE IN THE url('...') PLACEHOLDERS
-           ========================================================= */
         .slide-1 {
             background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0029.jpg');
             animation-delay: 0s;
@@ -257,7 +211,6 @@
             animation-delay: 25s;
         }
 
-        /* Precise 6-Slide Opacity Fade Keyframes */
         @keyframes smoothFade {
             0% { opacity: 0; transform: scale(1); }
             4% { opacity: 1; }
@@ -266,7 +219,6 @@
             100% { opacity: 0; }
         }
 
-        /* Keep Hero Text/Buttons Above Background Slides */
         .hero .container {
             position: relative;
             z-index: 2;
@@ -322,11 +274,25 @@
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
         }
+        .rental-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .rental-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
         .rental-card-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            object-position: center 40%;
             display: block;
             transition: transform 0.4s ease;
         }
@@ -504,53 +470,61 @@
             <div class="rentals-grid">
                 <!-- Option 1: Self-Drive Mustang / Sports & Premium Cars -->
                 <div class="rental-card">
-                    <img src="luxury_images/IMG-20260801-WA0059.jpg" alt="Mustang Self-Drive" class="rental-card-img">
-                    <div class="rental-card-body">
-                        <div>
-                            <h3>🔑 Self-Drive Cars</h3>
-                            <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
-                                Rent well-maintained sports cars, sedans, hatchbacks, and SUVs. Drive at your own pace with total privacy.
-                            </p>
-                            <ul class="rental-list">
-                                <li>✔️ <strong>Total Freedom:</strong> Flexible KM packages</li>
-                                <li>✔️ <strong>Sanitized Fleet:</strong> Mountain-ready vehicles</li>
-                                <li>✔️ <strong>Easy Process:</strong> Valid DL + ID verification</li>
-                            </ul>
+                    <a href="self_drive.html" class="rental-card-link">
+                        <img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Mustang Self-Drive" class="rental-card-img">
+                        <div class="rental-card-body">
+                            <div>
+                                <h3>🔑 Self-Drive Cars</h3>
+                                <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
+                                    Rent well-maintained sports cars, sedans, hatchbacks, and SUVs. Drive at your own pace with total privacy.
+                                </p>
+                                <ul class="rental-list">
+                                    <li>✔️ <strong>Total Freedom:</strong> Flexible KM packages</li>
+                                    <li>✔️ <strong>Sanitized Fleet:</strong> Mountain-ready vehicles</li>
+                                    <li>✔️ <strong>Easy Process:</strong> Valid DL + ID verification</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div class="btn btn-gallery" style="width: 100%;">
+                                    📄 View Self-Drive Fleet & Rates →
+                                </div>
+                            </div>
                         </div>
-                        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-                            <a href="self_drive.html" class="btn btn-gallery">
-                                📄 View Self-Drive Fleet & Rates →
-                            </a>
-                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20inquire%20about%20Self-Drive%20Car%20Rentals" class="btn btn-whatsapp">
-                                💬 Inquire on WhatsApp
-                            </a>
-                        </div>
+                    </a>
+                    <div style="padding: 0 20px 20px 20px;">
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20inquire%20about%20Self-Drive%20Car%20Rentals" class="btn btn-whatsapp" style="width: 100%;">
+                            💬 Inquire on WhatsApp
+                        </a>
                     </div>
                 </div>
 
                 <!-- Option 2: Force Urbania / Group Traveler -->
                 <div class="rental-card">
-                    <img src="rental_images/IMG-20260801-WA0076.jpg" alt="Force Urbania Luxury Traveler" class="rental-card-img">
-                    <div class="rental-card-body">
-                        <div>
-                            <h3>🚌 Outstation & Group Traveler</h3>
-                            <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
-                                Force Urbania VIP Luxury Travelers customized for high-altitude passes, family tours, and corporate trips.
-                            </p>
-                            <ul class="rental-list">
-                                <li>✔️ <strong>VIP AMG Seats:</strong> Reclining leather luxury</li>
-                                <li>✔️ <strong>Snow Pass Ready:</strong> Rohtang & Leh tours</li>
-                                <li>✔️ <strong>Hill Experts:</strong> Professional chauffeurs</li>
-                            </ul>
+                    <a href="car-rentals.html" class="rental-card-link">
+                        <img src="rental_images/IMG-20260801-WA0076.jpg" alt="Force Urbania Luxury Traveler" class="rental-card-img">
+                        <div class="rental-card-body">
+                            <div>
+                                <h3>🚌 Outstation & Group Traveler</h3>
+                                <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
+                                    Force Urbania VIP Luxury Travelers customized for high-altitude passes, family tours, and corporate trips.
+                                </p>
+                                <ul class="rental-list">
+                                    <li>✔️ <strong>VIP AMG Seats:</strong> Reclining leather luxury</li>
+                                    <li>✔️ <strong>Snow Pass Ready:</strong> Rohtang & Leh tours</li>
+                                    <li>✔️ <strong>Hill Experts:</strong> Professional chauffeurs</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div class="btn btn-gallery" style="width: 100%;">
+                                    📄 View Urbania & Tour Rates →
+                                </div>
+                            </div>
                         </div>
-                        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
-                            <a href="car-rentals.html" class="btn btn-gallery">
-                                📄 View Urbania & Tour Rates →
-                            </a>
-                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20a%20quote%20for%20Force%20Urbania%20Traveler" class="btn btn-whatsapp">
-                                💬 Get Traveler Quote on WhatsApp
-                            </a>
-                        </div>
+                    </a>
+                    <div style="padding: 0 20px 20px 20px;">
+                        <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20a%20quote%20for%20Force%20Urbania%20Traveler" class="btn btn-whatsapp" style="width: 100%;">
+                            💬 Get Traveler Quote on WhatsApp
+                        </a>
                     </div>
                 </div>
 
