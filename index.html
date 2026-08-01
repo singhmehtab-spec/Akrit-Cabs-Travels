@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akrit Cabs & Travels| Premium Private Taxi & Outstation Tours</title>
+    <title>Akrit Cabs & Travels | Premium Private Taxi & Outstation Tours</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -95,6 +95,46 @@
         .nav-links a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         .nav-links a:hover { color: var(--accent); }
         
+        /* Dropdown Menu Styling */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 4px; }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--navbar-bg);
+            min-width: 240px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.25);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1001;
+            padding: 5px 0;
+        }
+
+        .dropdown-menu a {
+            color: #FFFFFF;
+            padding: 12px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu a:last-child { border-bottom: none; }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(255,255,255,0.12);
+            color: var(--accent);
+        }
+
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-menu { display: block; }
+        }
+
         .mobile-menu-btn {
             display: none;
             font-size: 1.8rem;
@@ -148,12 +188,41 @@
         .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         .btn-call { background: var(--accent); color: var(--primary); }
         .btn-whatsapp { background: #25D366; color: white; }
-        .btn-gallery { background: var(--primary); color: white; margin-top: 20px; }
+        .btn-gallery { background: var(--primary); color: white; }
 
         /* Feature Badges Grid */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center; }
         .feature-box { padding: 20px; background: #F4F7FC; border-radius: 10px; border-top: 3px solid var(--primary); }
         .feature-box h3 { font-size: 1.1rem; color: var(--primary); margin: 8px 0 5px; }
+
+        /* Rentals Showcase Grid */
+        .rentals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 15px; }
+        .rental-card { 
+            background: #F8F9FA; 
+            border: 1px solid #E0E0E0; 
+            border-radius: 12px; 
+            overflow: hidden;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .rental-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .rental-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        .rental-card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 10px; }
+        .rental-list { list-style: none; margin: 15px 0; }
+        .rental-list li { padding: 6px 0; border-bottom: 1px dashed #DDD; font-size: 0.95rem; }
+        .rental-list li:last-child { border-bottom: none; }
 
         /* Route Chips */
         .routes-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
@@ -232,6 +301,17 @@
             }
             .nav-links.active { display: flex; }
             .nav-links a { padding: 14px 20px; text-align: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            
+            .dropdown { width: 100%; text-align: center; }
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: rgba(0, 0, 0, 0.25);
+                width: 100%;
+                border-radius: 0;
+            }
+            .dropdown-menu.show { display: block; }
+
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1.1rem; }
             .hero-btns { flex-direction: column; gap: 12px; }
@@ -243,13 +323,25 @@
 
     <!-- Header Navigation -->
     <nav class="navbar">
-        <a href="#" class="logo-container">
-            <img src="logo.png" alt="Akrit Cabs & TravelsLogo" class="logo-img">
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Akrit Cabs & Travels Logo" class="logo-img">
             <span>Akrit Cabs & Travels</span>
         </a>
         <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
         <div class="nav-links" id="navLinks">
-            <a href="#" onclick="closeMenu()">Home</a>
+            <a href="index.html" onclick="closeMenu()">Home</a>
+            
+            <!-- Vehicle Rental Services Dropdown -->
+            <div class="dropdown">
+                <a href="#rentals" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                    Vehicle Rentals ▼
+                </a>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="self_drive.html">🔑 Self-Drive Cars</a>
+                    <a href="car-rentals.html">🚘 Car Rentals (With Driver)</a>
+                </div>
+            </div>
+
             <a href="#calculator" onclick="closeMenu()">Estimate Fare</a>
             <a href="#why-us" onclick="closeMenu()">Why Choose Us</a>
             <a href="gallery.html">Gallery</a>
@@ -261,8 +353,8 @@
     <!-- Dynamic Hero -->
     <header class="hero">
         <div class="container">
-            <h1>Safe, Reliable,Akrit Cabs & Travels</h1>
-            <p>Independent Driver Serving Jalandhar, Punjab & Himachal Pradesh</p>
+            <h1>Safe, Reliable, Akrit Cabs & Travels</h1>
+            <p>Independent Driver & Rental Services Serving Jalandhar, Punjab & Himachal Pradesh</p>
             <div class="hero-btns">
                 <a href="tel:+917986492813" class="btn btn-call">📞 Call Now: 7986492813</a>
                 <a href="https://wa.me/917986492813?text=Hello%20Akrit,%20I%20want%20to%20book%20a%20ride" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
@@ -271,6 +363,74 @@
     </header>
 
     <div class="container">
+
+        <!-- Vehicle Rental Services Showcase Block -->
+        <div class="card" id="rentals">
+            <div class="card-header">
+                <h2>Vehicle Rental Services</h2>
+            </div>
+            <p style="margin-bottom: 20px; color: #555;">
+                Select how you want to travel across Punjab, Himachal Pradesh & Delhi NCR:
+            </p>
+            
+            <div class="rentals-grid">
+                <!-- Option 1: Self-Drive Mustang / Sports & Premium Cars -->
+                <div class="rental-card">
+                    <img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Mustang Self-Drive" class="rental-card-img">
+                    <div class="rental-card-body">
+                        <div>
+                            <h3>🔑 Self-Drive Cars</h3>
+                            <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
+                                Rent well-maintained sports cars, sedans, hatchbacks, and SUVs. Drive at your own pace with total privacy.
+                            </p>
+                            <ul class="rental-list">
+                                <li>✔️ <strong>Total Freedom:</strong> Flexible KM packages</li>
+                                <li>✔️ <strong>Sanitized Fleet:</strong> Mountain-ready vehicles</li>
+                                <li>✔️ <strong>Easy Process:</strong> Valid DL + ID verification</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                            <a href="self_drive.html" class="btn btn-gallery">
+                                📄 View Self-Drive Fleet & Rates →
+                            </a>
+                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20to%20inquire%20about%20Self-Drive%20Car%20Rentals" class="btn btn-whatsapp">
+                                💬 Inquire on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Option 2: Force Urbania / Group Traveler -->
+                <div class="rental-card">
+                    <img src="rental_images/IMG-20260801-WA0076.jpg" alt="Force Urbania Luxury Traveler" class="rental-card-img">
+                    <div class="rental-card-body">
+                        <div>
+                            <h3>🚌 Outstation & Group Traveler</h3>
+                            <p style="font-size:0.95rem; color:#555; margin-bottom: 12px;">
+                                Force Urbania VIP Luxury Travelers customized for high-altitude passes, family tours, and corporate trips.
+                            </p>
+                            <ul class="rental-list">
+                                <li>✔️ <strong>VIP AMG Seats:</strong> Reclining leather luxury</li>
+                                <li>✔️ <strong>Snow Pass Ready:</strong> Rohtang & Leh tours</li>
+                                <li>✔️ <strong>Hill Experts:</strong> Professional chauffeurs</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+                            <a href="car-rentals.html" class="btn btn-gallery">
+                                📄 View Urbania & Tour Rates →
+                            </a>
+                            <a href="https://wa.me/917986492813?text=Hi%20Akrit,%20I%20want%20a%20quote%20for%20Force%20Urbania%20Traveler" class="btn btn-whatsapp">
+                                💬 Get Traveler Quote on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Option 3: Rental with Driver (Cabs / MPVs) -->
+               
+                </div>
+            </div>
+        </div>
 
         <!-- Why Choose Us -->
         <div class="card" id="why-us">
@@ -301,7 +461,7 @@
             </div>
         </div>
 
-        <!-- Popular Outstation Routes -->
+        <!-- Popular Outstation Destinations -->
         <div class="card">
             <div class="card-header">
                 <h2>Popular Outstation Destinations</h2>
@@ -344,7 +504,7 @@
             </div>
         </div>
 
-        <!-- Highlights Preview Section -->
+        <!-- Journey Highlights Preview Section -->
         <div class="card">
             <div class="card-header">
                 <h2>Journey Highlights</h2>
@@ -353,20 +513,20 @@
             
             <div class="gallery-preview">
                 <div class="preview-item">
-                    <img src="IMG-20260728-WA0074.jpg" alt="Ertiga parked in mountain pine woods">
+                    <img src="rental_images/IMG-20260728-WA0074.jpg" alt="Ertiga parked in mountain pine woods">
                     <div class="preview-caption">🌲 Pine Forest Mountain Trips</div>
                 </div>
                 <div class="preview-item">
-                    <img src="IMG-20260728-WA0076.jpg" alt="Ertiga on scenic highway">
-                    <div class="preview-caption">⛰️ Safe Hill Driving Expert</div>
+                    <img src="rental_images/IMG-20260801-WA0076.jpg" alt="Force Urbania on Snow Pass">
+                    <div class="preview-caption">❄️ High Altitude Snow Passes</div>
                 </div>
                 <div class="preview-item">
-                    <img src="IMG-20260728-WA0081.jpg" alt="Cab parked at hill resort">
+                    <img src="rental_images/IMG-20260728-WA0081.jpg" alt="Cab parked at hill resort">
                     <div class="preview-caption">🏡 Doorstep Resort Pickup & Drop</div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 10px;">
+            <div style="text-align: center; margin-top: 20px;">
                 <a href="gallery.html" class="btn btn-gallery">📸 View Full Photo & Video Gallery →</a>
             </div>
         </div>
@@ -512,6 +672,14 @@
 
         function closeMenu() {
             document.getElementById("navLinks").classList.remove("active");
+            document.getElementById("dropdownMenu").classList.remove("show");
+        }
+
+        function toggleDropdown(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                document.getElementById("dropdownMenu").classList.toggle("show");
+            }
         }
 
         function calculateFare() {
@@ -533,7 +701,7 @@
                 fareDisplay.innerText = "Airport Transfers Start From ~ ₹500 - ₹800";
             } else if (tripType === "local") {
                 distanceGroup.style.display = "none";
-                fareDisplay.innerText = "Local Full Day Package: ~ ₹2,200 (8 Hrs / 80 KM)";
+                fareDisplay.innerText = "Local Full Day Package: ~ ₹2,200 (8 Hours / 80 KM)";
             }
         }
     </script>
