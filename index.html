@@ -52,15 +52,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
         body { background: var(--light); color: #333; line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* Dynamic Background Slideshow (.jpg) */
-        @keyframes slideshow {
-            0% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
-            25% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('2.jpg'); }
-            50% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('3.jpg'); }
-            75% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('4.jpg'); }
-            100% { background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('1.jpg'); }
-        }
-
         /* Navigation Bar */
         .navbar {
             background: var(--navbar-bg);
@@ -90,6 +81,70 @@
             border-radius: 50%; 
             margin-right: 10px; 
         }
+        /* ==========================================
+   1. HERO SLIDER / BACKGROUND IMAGES FIX
+   ========================================== */
+
+.slide {
+  width: 100%;
+  height: 100vh; /* or set your preferred hero height like 500px */
+  
+  /* Ensures background images scale properly without stretching */
+  background-size: cover;
+  
+  /* Centers the image subject so side angles don't cut off key parts */
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+  /* Keeps transition smooth if sliding */
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* EXAMPLE SLIDE USAGE (From your code snippet) */
+.slide-1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                    url('luxury_images/IMG-20260801-WA0029.jpg');
+}
+
+.slide-2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                    url('luxury_images/IMG-20260801-WA0038.jpg');
+}
+
+
+/* ==========================================
+   2. VEHICLE RENTAL CARDS (IMAGE FIX)
+   ========================================== */
+
+/* Container for your rental cards */
+.rental-card {
+  border-radius: 12px;
+  overflow: hidden; /* Prevents image corners from overflowing rounded borders */
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* HTML <img> tags inside your rental cards */
+.rental-card img {
+  width: 100%;
+  height: 220px; /* Gives all card images a uniform height */
+  
+  /* Maintains landscape aspect ratio and crops cleanly */
+  object-fit: cover; 
+  
+  /* Shifts focus to center-top where cars/vans are usually angled */
+  object-position: center 40%; 
+  
+  display: block;
+}
+
+/* Optional: If you prefer displaying FULL uncropped images inside cards */
+/*
+.rental-card img.fit-contain {
+  object-fit: contain;
+  background-color: #f8f9fa;
+}
+*/
         
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
@@ -144,17 +199,79 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Smooth Hero Slideshow Container (6-Slide Configuration) */
         .hero {
+            position: relative;
+            color: white;
+            padding: 110px 20px;
+            text-align: center;
+            overflow: hidden;
+            background: #000; /* Dark background placeholder */
+        }
+
+        /* Slide Base Styles */
+        .hero-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            color: white;
-            padding: 90px 20px;
-            text-align: center;
-            animation: slideshow 20s infinite ease-in-out;
-            transition: background-image 1s ease-in-out;
+            opacity: 0;
+            animation: smoothFade 30s infinite ease-in-out; /* 30s total rotation for 6 slides (5s per slide) */
+            z-index: 1;
         }
+
+        /* =========================================================
+           PASTE YOUR IMAGE PATHS HERE IN THE url('...') PLACEHOLDERS
+           ========================================================= */
+        .slide-1 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0029.jpg');
+            animation-delay: 0s;
+        }
+
+        .slide-2 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0058.jpg');
+            animation-delay: 5s;
+        }
+
+        .slide-3 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0043.jpg');
+            animation-delay: 10s;
+        }
+
+        .slide-4 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0038.jpg');
+            animation-delay: 15s;
+        }
+
+        .slide-5 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0052.jpg');
+            animation-delay: 20s;
+        }
+
+        .slide-6 {
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('luxury_images/IMG-20260801-WA0064.jpg');
+            animation-delay: 25s;
+        }
+
+        /* Precise 6-Slide Opacity Fade Keyframes */
+        @keyframes smoothFade {
+            0% { opacity: 0; transform: scale(1); }
+            4% { opacity: 1; }
+            16.66% { opacity: 1; transform: scale(1.04); }
+            20.66% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; }
+        }
+
+        /* Keep Hero Text/Buttons Above Background Slides */
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .hero h1 { font-size: 3.2rem; margin-bottom: 10px; color: var(--accent); text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
         .hero p { font-size: 1.3rem; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
         .hero-btns { display: flex; gap: 15px; justify-content: center; }
@@ -208,9 +325,13 @@
         }
         .rental-card-img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
             display: block;
+            transition: transform 0.4s ease;
+        }
+        .rental-card:hover .rental-card-img {
+            transform: scale(1.03);
         }
         .rental-card-body {
             padding: 20px;
@@ -350,8 +471,15 @@
         </div>
     </nav>
 
-    <!-- Dynamic Hero -->
+    <!-- Dynamic Hero with 6 Smooth Cross-Fade Slides -->
     <header class="hero">
+        <div class="hero-bg-slide slide-1"></div>
+        <div class="hero-bg-slide slide-2"></div>
+        <div class="hero-bg-slide slide-3"></div>
+        <div class="hero-bg-slide slide-4"></div>
+        <div class="hero-bg-slide slide-5"></div>
+        <div class="hero-bg-slide slide-6"></div>
+
         <div class="container">
             <h1>Safe, Reliable, Akrit Cabs & Travels</h1>
             <p>Independent Driver & Rental Services Serving Jalandhar, Punjab & Himachal Pradesh</p>
@@ -376,7 +504,7 @@
             <div class="rentals-grid">
                 <!-- Option 1: Self-Drive Mustang / Sports & Premium Cars -->
                 <div class="rental-card">
-                    <img src="luxury_images/IMG-20260801-WA0058.jpg" alt="Mustang Self-Drive" class="rental-card-img">
+                    <img src="luxury_images/IMG-20260801-WA0059.jpg" alt="Mustang Self-Drive" class="rental-card-img">
                     <div class="rental-card-body">
                         <div>
                             <h3>🔑 Self-Drive Cars</h3>
@@ -426,9 +554,6 @@
                     </div>
                 </div>
 
-                <!-- Option 3: Rental with Driver (Cabs / MPVs) -->
-               
-                </div>
             </div>
         </div>
 
@@ -513,7 +638,7 @@
             
             <div class="gallery-preview">
                 <div class="preview-item">
-                    <img src="rental_images/IMG-20260728-WA0074.jpg" alt="Ertiga parked in mountain pine woods">
+                    <img src="rental_images/IMG-20260728-WA0074.jpg" alt="Mountain trip pine forest">
                     <div class="preview-caption">🌲 Pine Forest Mountain Trips</div>
                 </div>
                 <div class="preview-item">
